@@ -1,0 +1,25 @@
+#performance-section {
+    width: 258px;
+    height: 263px;
+}
+
+
+#performance-section .recharts-wrapper {
+    background: #282D30;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+    border-radius: 5px;
+}
+
+
+@media (max-width: 1024px) {
+
+    #performance-section {
+        width: 213px;
+        height: 218px;
+    }
+
+    #performance-section .recharts-polar-angle-axis-tick tspan {
+        font-size: 11px;
+    }
+
+}

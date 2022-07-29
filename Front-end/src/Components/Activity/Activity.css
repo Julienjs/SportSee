@@ -1,0 +1,73 @@
+#activity-section {
+    background: #FBFBFB;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+    border-radius: 5px;
+    width: 1000px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.tooltips {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 39px;
+    height: 63px;
+    background-color: rgba(230, 0, 0, 1);
+    font-weight: 500;
+    font-size: 7px;
+    color: white
+}
+
+.tooltips p {
+    margin: 0;
+}
+
+
+
+
+
+/* legend activity */
+.legend-activity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 900px;
+}
+
+.legend-activity h2 {
+    font-weight: 500;
+    font-size: 15px;
+    color: #20253A;
+    margin: 0;
+}
+
+.legend-activity div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.legend-activity p {
+    font-weight: 500;
+    font-size: 14px;
+    color: #74798C;
+}
+
+
+@media (max-width: 1024px) {
+
+    #activity-section {
+        width: 700px;
+        height: 250px;
+    }
+
+    .legend-activity {
+        width: 650px;
+    }
+
+}

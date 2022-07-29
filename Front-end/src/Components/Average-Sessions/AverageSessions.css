@@ -1,0 +1,64 @@
+#average-sessions-section {
+    background-color: #ff0000;
+    width: 258px;
+    height: 263px;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+
+}
+
+#average-sessions-section h2 {
+    font-weight: 500;
+    font-size: 15px;
+    color: white;
+    width: 147px;
+    height: 48px;
+    mix-blend-mode: normal;
+    opacity: 0.5;
+    margin: 0;
+    position: absolute;
+    left: 1.5em;
+    bottom: 13em;
+}
+
+#average-sessions-section .recharts-surface {
+    border-radius: 5px;
+}
+
+#average-sessions-section .session-length {
+    font-size: 8px;
+    font-weight: 500;
+    width: 39px;
+    height: 25px;
+    background: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 1024px) {
+
+    #average-sessions-section {
+        width: 213px;
+        height: 218px;
+    }
+
+    #average-sessions-section .recharts-surface {
+        width: 210px;
+        height: 200px;
+    }
+
+    .legend-activity {
+        width: 650px;
+    }
+
+    #average-sessions-section h2 {
+        font-size: 12px;
+        width: 147px;
+        height: 48px;
+        left: 1.5em;
+        bottom: 13em;
+    }
+
+}
