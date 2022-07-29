@@ -7,7 +7,7 @@
 
 - [NodeJS (**version 12.18**)](https://nodejs.org/en/)
 
-### 1.2 Clone the project 
+#### 1.2 Clone the project 
 
 - Fork the repository
 - Clone it on your computer.
