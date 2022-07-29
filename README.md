@@ -7,24 +7,24 @@
 
 - [NodeJS (**version 12.18**)](https://nodejs.org/en/)
 
-#### 1.2 Clone the project 
+### 1.2 Clone the project 
 
 - Fork the repository
 - Clone it on your computer.
 
 ##  2. Starting the project
 
-##  2.1 Launching the Backend :
+###  2.1 Launching the Backend :
 
-### In the terminal :
+#### In the terminal :
 
 - The " cd Back-end " command will give you access to the backend document
 - The " npm install " command install all dependencies in the backend
 - The " npm start " commend will connect you to a local server
 
-##  2.2 Launching the Frontend :
+###  2.2 Launching the Frontend :
 
-### In the terminal :
+#### In the terminal :
 
 - The " cd Front-end" command will give you access to the frontend document
 - The " npm install " command install all dependencies in the frontend
