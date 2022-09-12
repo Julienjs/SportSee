@@ -11,7 +11,7 @@ const Error = () => {
 
     /**
      * link that removes the local storage ID and returns to the login page
-     * @return {*}  that removes the local storage ID and returns to the login page
+     * @return that removes the local storage ID and returns to the login page
      */
 
     const handleLink = (e) => {

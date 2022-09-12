@@ -2,31 +2,18 @@ import React, { useEffect, useState } from 'react';
 import './Performance.css'
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import { getUserPerformance } from '../../Tools/API';
+import { formatAngleAxis } from '../../Tools/Formatters';
+import PropTypes from "prop-types";
+
 
 /**
  * component that displays the radar chart containing the user's performance
- * @param {Number} id 
+ * @param {String} id 
  * @returns the radar chart containing the user's performance
  */
 
 const Performance = ({ id }) => {
     const [performance, setPerformance] = useState([])
-
-    /**
-     * changes the value of  kind key into different expected performances
-     * @param {Number} value 
-     * @returns the value of  kind key into different expected performances
-     */
-
-    function formatAngleAxis(value) {
-        if (value === 1) return 'Cardio'
-        if (value === 2) return 'Energie'
-        if (value === 3) return 'Endurance'
-        if (value === 4) return 'Force'
-        if (value === 5) return 'Vitesse'
-        if (value === 6) return 'Intensité'
-        return value
-    }
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -71,6 +58,11 @@ const Performance = ({ id }) => {
             </ResponsiveContainer>
         </section >
     );
+};
+
+//proptypes of Performance
+Performance.propTypes = {
+    id: PropTypes.string
 };
 
 export default Performance;

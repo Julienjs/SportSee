@@ -2,33 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts';
 import './AverageSessions.css'
 import { getUserAverageSessions } from '../../Tools/API';
+import { days } from '../../Tools/Formatters';
+import PropTypes from "prop-types";
+
 
 
 /**
  *  Component containing a area chart of the user's average sessions(days,session-length)
- * @param {Number} id 
+ * @param {String} id 
  * @returns   a area chart of the user's average sessions
  */
 
 const AverageSessions = ({ id }) => {
     const [average, setAverage] = useState([]);
 
-
-    /**
-     * converts the value of the day key to a letter  
-     * @param {Number} item 
-     * @returns the value of the day key in letters 
-     */
-
-    const days = (item) => {
-        const daysLetters = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-        return `${daysLetters[item - 1]}`;
-    }
-
     /**
      * customise the content of tooltips
      * @param {Boolean} active
-     * @param {Object} payload
+     * @param {Array} payload
      * @returns {Dom} the content of tooltips
      */
 
@@ -42,6 +33,12 @@ const AverageSessions = ({ id }) => {
         }
         return null
     }
+
+    //proptypes of CustomTooltip
+    CustomTooltip.propTypes = {
+        active: PropTypes.bool,
+        payload: PropTypes.array,
+    };
 
 
     useEffect(() => {
@@ -86,7 +83,6 @@ const AverageSessions = ({ id }) => {
                         }}
                         tickFormatter={days}
                     />
-
                     <YAxis hide={true} domain={['dataMin-10', 'dataMax+10']} />
                     <Tooltip content={<CustomTooltip />} cursor={false} />
                     <Line type="monotone" dataKey="sessionLength" />
@@ -110,6 +106,11 @@ const AverageSessions = ({ id }) => {
             </ResponsiveContainer>
         </section>
     );
+};
+
+//proptypes of AverageSessions
+AverageSessions.propTypes = {
+    id: PropTypes.string
 };
 
 export default AverageSessions;

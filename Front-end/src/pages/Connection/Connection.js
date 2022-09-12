@@ -2,6 +2,8 @@ import React from 'react';
 import MaleAvatar from '../../assets/avatar-homme.png'
 import FemaleAvatar from '../../assets/avatar-femme.png'
 import './Connection.css'
+import PropTypes from "prop-types";
+
 
 /**
  * component that displays a map of each user
@@ -33,6 +35,11 @@ const Connection = () => {
         localStorage.setItem('id', uid);
         window.location = `/Dashboard/${uid}`
     }
+
+    //proptypes of handleConnect
+    handleConnect.propTypes = {
+        uid: PropTypes.string
+    };
 
     return (
         <main className='connection-main'>

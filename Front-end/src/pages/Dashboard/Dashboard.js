@@ -15,6 +15,8 @@ import Glucides from '../../assets/apple.svg'
 import Lipides from '../../assets/cheeseburger.svg'
 import Loader from '../../Components/Loader/Loader';
 import './Dashboard.css'
+import PropTypes from "prop-types";
+
 
 /**
  * Dashboard page that displays all components (header, activity, averageSession, performance, score, cardInfo, sideBar)
@@ -77,6 +79,15 @@ const Dashboard = () => {
                 :
                 <Error />
     )
+};
+
+//proptypes for Dashboard
+Dashboard.propTypes = {
+    firstName: PropTypes.string,
+    score: PropTypes.number,
+    type: PropTypes.string,
+    key: PropTypes.number,
+    data: PropTypes.object
 };
 
 export default Dashboard;

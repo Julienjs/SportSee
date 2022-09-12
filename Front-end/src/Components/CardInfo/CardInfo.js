@@ -1,5 +1,6 @@
 import React from 'react';
 import "./CardInfo.css"
+import PropTypes from "prop-types";
 
 /**
  *  component that displays total calories, protein, fat, carbohydrates
@@ -24,6 +25,13 @@ const CardInfo = ({ image, type, value }) => {
             </div>
         </div >
     );
+};
+
+//proptypes for CardInfo
+CardInfo.propTypes = {
+    image: PropTypes.string,
+    value: PropTypes.number,
+    type: PropTypes.string,
 };
 
 export default CardInfo;

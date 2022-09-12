@@ -1,6 +1,8 @@
 import React from 'react';
 import { PieChart, Pie, ResponsiveContainer } from 'recharts';
 import './Score.css'
+import PropTypes from "prop-types";
+
 
 /**
  * component that displays a pie chart containing the user's score 
@@ -43,6 +45,11 @@ const Score = ({ score }) => {
       </ResponsiveContainer>
     </section>
   );
+};
+
+//proptypes of Score
+Score.propTypes = {
+  score: PropTypes.number
 };
 
 export default Score;

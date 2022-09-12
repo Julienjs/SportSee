@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Header.css'
+import PropTypes from "prop-types";
+
 
 /**
  * component that displays a personalised welcome message
@@ -17,6 +19,11 @@ const Header = ({ firstName }) => {
             </article>
         </section>
     );
+};
+
+//proptypes for Header
+Header.propTypes = {
+    firstName: PropTypes.string,
 };
 
 export default Header;

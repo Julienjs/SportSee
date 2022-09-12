@@ -3,11 +3,13 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import { getUserActivity } from '../../Tools/API'
 import LegendActivity from './LegendActivity';
 import './Activity.css'
+import { dateFormat } from '../../Tools/Formatters';
+import PropTypes from "prop-types";
 
 
 /**
  * Component containing a bar chart on the user's activity (day, kilogram, calories)
- * @param {Number} id 
+ * @param {String} id 
  * @returns  a bar chart of the user's activity
  */
 
@@ -16,23 +18,13 @@ const Activity = ({ id }) => {
     const [activityData, setActivityData] = useState({});
 
     /**
-     * changes the date format to fr
-     * @param {String} tickItem 
-     * @returns the date format to fr
-     */
-
-    const dateFormat = (tickItem) => {
-        const options = { day: 'numeric' };
-        const formatedDate = new Date(tickItem)
-        return formatedDate.toLocaleDateString('fr-FR', options)
-    }
-
-    /**
      * customise the content of tooltips
      * @param {Boolean} active
-     * @param {Object} payload
+     * @param {Array} payload
      * @returns {Dom} the content of tooltips
      */
+
+
 
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
@@ -45,6 +37,12 @@ const Activity = ({ id }) => {
         }
         return null
     }
+
+    //proptypes of CustomTooltip
+    CustomTooltip.propTypes = {
+        active: PropTypes.bool,
+        payload: PropTypes.array,
+    };
 
     useEffect(() => {
         const getUserData = async () => {
@@ -115,6 +113,11 @@ const Activity = ({ id }) => {
             </ResponsiveContainer>
         </section>
     );
+};
+
+//proptypes of Activity
+Activity.propTypes = {
+    id: PropTypes.string
 };
 
 export default Activity;
