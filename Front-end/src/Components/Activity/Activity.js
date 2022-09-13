@@ -5,6 +5,7 @@ import LegendActivity from './LegendActivity';
 import './Activity.css'
 import { dateFormat } from '../../Tools/Formatters';
 import PropTypes from "prop-types";
+import { userActivity } from '../../Tools/Model';
 
 
 /**
@@ -48,9 +49,10 @@ const Activity = ({ id }) => {
         const getUserData = async () => {
             try {
                 const response = await getUserActivity(id);
-                setActivityData(response.data.sessions)
+                const usersActivity = new userActivity(response.data)
+                setActivityData(usersActivity.sessions)
             } catch (err) {
-                console.log(err.response.data);
+                console.log(err);
             }
         };
         getUserData();

@@ -28,6 +28,11 @@
     font-size: 18px;
 }
 
+.errorMsg {
+    color: red;
+    margin: 0;
+}
+
 @media (max-width: 1024px) {
     #header {
         height: 50px;

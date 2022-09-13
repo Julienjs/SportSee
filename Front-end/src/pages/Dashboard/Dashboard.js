@@ -16,6 +16,7 @@ import Lipides from '../../assets/cheeseburger.svg'
 import Loader from '../../Components/Loader/Loader';
 import './Dashboard.css'
 import PropTypes from "prop-types";
+import { userDataModel } from '../../Tools/Model';
 
 
 /**
@@ -26,8 +27,9 @@ import PropTypes from "prop-types";
 const Dashboard = () => {
     const [data, setData] = useState(null);
     const [firstName, setFirstName] = useState(null);
-    const [score, setScore] = useState(null)
+    const [score, setScore] = useState(null);
     const [key, setKey] = useState(null);
+    const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const urlParams = useParams()
@@ -37,19 +39,20 @@ const Dashboard = () => {
         const getUserData = async () => {
             try {
                 const response = await getUserInfo(id);
-                setData(response.data)
-                setFirstName(response.data.userInfos.firstName);
-                setScore(response.data.todayScore || response.data.score)
-                setKey(response.data.keyData)
+                const userData = new userDataModel(response)
+                setData(userData.data)
+                setFirstName(userData.firstName);
+                setScore(userData.todayScore)
+                setKey(userData.keyData)
+                setError(userData.error)
             } catch (err) {
-                console.log(err.response.data);
+                console.log(err);
             } finally {
                 setLoading(false);
             }
         };
-        getUserData(id);
+        getUserData();
     }, [id]);
-
 
     return (
         loading ? <Loader />
@@ -59,7 +62,7 @@ const Dashboard = () => {
                     <main>
                         <SideBar />
                         <div className='chart-container'>
-                            <Header firstName={firstName} />
+                            <Header firstName={firstName} error={error} />
                             <Activity id={id} />
                             <div className='performance-container'>
                                 <AverageSessions id={id} />

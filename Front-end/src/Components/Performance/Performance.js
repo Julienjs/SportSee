@@ -4,6 +4,7 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } fro
 import { getUserPerformance } from '../../Tools/API';
 import { formatAngleAxis } from '../../Tools/Formatters';
 import PropTypes from "prop-types";
+import { userPerformance } from '../../Tools/Model';
 
 
 /**
@@ -19,9 +20,10 @@ const Performance = ({ id }) => {
         const fetchUserData = async () => {
             try {
                 const response = await getUserPerformance(id);
-                setPerformance(response.data.data.reverse());
+                const performanceData = new userPerformance(response.data)
+                setPerformance(performanceData.performance.reverse());
             } catch (err) {
-                console.log(err.response.data);
+                console.log(err);
             }
         }
         fetchUserData()

@@ -13,35 +13,35 @@ const apiBaseUrl = axios.create({
     method: 'GET',
 });
 
-let mockedDatas = null;
+let mockedDatas = false;
 /**
  * retrieve user general information
- * @param {Number} id user identifier
+ * @param {String} id user identifier
  * @returns {Object} user general information
  */
 export const getUserInfo = async (id) => {
     try {
-        const response = await apiBaseUrl.get(`/${id}`);
-        if (response.status === 200) {
-            console.log('API working');
-            mockedDatas = false;
-            return response.data;
+        if (mockedDatas) {
+            const mockedResponse = await USER_MAIN_DATA.filter((x) => x.id === +id);
+            console.log('Mocked data');
+            return {
+                data: mockedResponse[0],
+                error: 'Erreur serveur 404 les données sont affichées via le mock',
+            };
         } else {
-            mockedDatas = true;
+            const response = await apiBaseUrl.get(`/${id}`);
+            console.log('API working');
+            return response.data;
         }
     } catch (error) {
-        console.log('API unavailable. Datas coming from mock.');
-        mockedDatas = true;
-        const mockedResponse = await USER_MAIN_DATA.filter((x) => x.id === +id);
-        return {
-            data: mockedResponse[0],
-        };
+        console.log(error.message);
+        return error.message
     }
 };
 
 /**
  * retrieve user activity information
- * @param {Number} id 
+ * @param {String} id 
  * @returns {Object} user activity information
  */
 
@@ -49,6 +49,8 @@ export const getUserActivity = async (id) => {
     try {
         if (mockedDatas) {
             const mockedResponse = await USER_ACTIVITY.filter((x) => x.userId === +id);
+            console.log('Mocked data');
+
             return {
                 data: mockedResponse[0],
             };
@@ -57,13 +59,13 @@ export const getUserActivity = async (id) => {
             return response.data;
         }
     } catch (error) {
-        console.log(error);
+        return error.message
     }
 };
 
 /**
  * retrieve user average sessions information
- * @param {Number} id 
+ * @param {String} id 
  * @returns {Object} user average sessions information
  */
 
@@ -74,6 +76,7 @@ export const getUserAverageSessions = async (id) => {
             const response = await USER_AVERAGE_SESSIONS.filter(
                 (x) => x.userId === +id
             );
+            console.log('Mocked data');
             return {
                 data: response[0],
             };
@@ -82,13 +85,13 @@ export const getUserAverageSessions = async (id) => {
             return response.data;
         }
     } catch (error) {
-        console.log(error);
+        return error.message
     }
 };
 
 /**
  * retrieve user performance information
- * @param {Number} id 
+ * @param {String} id 
  * @returns {Object} user performance information
  */
 
@@ -104,6 +107,6 @@ export const getUserPerformance = async (id) => {
             return response.data;
         }
     } catch (error) {
-        console.log(error);
+        return error.message
     }
 };

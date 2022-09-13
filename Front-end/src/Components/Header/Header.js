@@ -9,13 +9,16 @@ import PropTypes from "prop-types";
  * @returns a personalised welcome message
  */
 
-const Header = ({ firstName }) => {
+const Header = ({ firstName, error }) => {
 
     return (
         <section id='header'>
             <article>
                 <h1>Bonjour <span>{firstName}</span></h1>
                 <p>Félicitation ! Vous avez explosé vos objectifs hier 👏 </p>
+                {error &&
+                    <small className='errorMsg'>{error}</small>
+                }
             </article>
         </section>
     );

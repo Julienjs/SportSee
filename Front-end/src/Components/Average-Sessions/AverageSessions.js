@@ -4,6 +4,7 @@ import './AverageSessions.css'
 import { getUserAverageSessions } from '../../Tools/API';
 import { days } from '../../Tools/Formatters';
 import PropTypes from "prop-types";
+import { userAverageSessions } from '../../Tools/Model';
 
 
 
@@ -45,7 +46,8 @@ const AverageSessions = ({ id }) => {
         const fetchUserData = async () => {
             try {
                 const response = await getUserAverageSessions(id);
-                setAverage(response.data.sessions);
+                const averageData = new userAverageSessions(response.data)
+                setAverage(averageData.sessions);
             } catch (err) {
                 console.log(err.response.data);
             }
